@@ -1,0 +1,50 @@
+<nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-warning">
+  <div class="container-fluid">
+    <a class="navbar-brand fw-bolder fs-5" href="/">Zcommerce</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNavAltMarkup"
+      aria-controls="navbarNavAltMarkup"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a
+          class="<%= path === '/' ? 'active nav-link fw-bolder fs-5' : 'nav-link fw-bolder fs-5' %>"
+          href="/"
+          >Shop</a
+        >
+        <a
+          class="<%= path === '/cart' ? 'active nav-link fw-bolder fs-5' : 'nav-link fw-bolder fs-5' %>"
+          href="/cart"
+          >Cart</a
+        >
+        <a
+          class="<%= path === '/order' ? 'active nav-link fw-bolder fs-5' : 'nav-link fw-bolder fs-5' %>"
+          href="/order"
+          >Order</a
+        >
+        <a
+          class="<%= path === '/admin/addProduct' ? 'active nav-link fw-bolder fs-5' : 'nav-link fw-bolder fs-5' %>"
+          href="/admin/addProduct"
+          >Add Product</a
+        >
+        <a
+          class="<%= path === '/admin/products' ? 'active nav-link fw-bolder fs-5' : 'nav-link fw-bolder fs-5' %>"
+          href="/admin/products"
+          >Admin Product</a
+        >
+      </div>
+      <div class="navbar-nav ms-auto">
+        <a class="nav-link fw-bolder fs-5" href="/login"> Login </a>
+        <a class="nav-link fw-bolder fs-5" href="/register"> Register </a>
+        <a class="nav-link fw-bolder fs-5" href="/logout"> Logout </a>
+      </div>
+    </div>
+  </div>
+</nav>
