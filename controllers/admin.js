@@ -10,7 +10,18 @@ exports.getAddProduct = async (req, res, next) => {
 };
 
 exports.postAddProduct = async (req, res, next) => {
-  const newProduct = new Product(req.body);
+  const title = req.body.title;
+  const price = req.body.price;
+  const description = req.body.description;
+  const imageUrl = req.body.imageUrl;
+  const userId = req.user;
+  const newProduct = new Product({
+    title: title,
+    price: price,
+    description: description,
+    imageUrl: imageUrl,
+    userId: userId,
+  });
   await newProduct.save();
   res.redirect(`/product/${newProduct._id}`);
 };

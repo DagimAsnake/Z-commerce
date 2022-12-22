@@ -18,3 +18,20 @@ exports.getProduct = async (req, res, next) => {
     path: "/product/:id",
   });
 };
+
+exports.getCart = async (req, res, next) => {
+  const user = await req.user.populate("cart.items.productId");
+  const products = user.cart.items;
+  res.render("shop/cart", {
+    products: products,
+    pageTitle: "Your Cart",
+    path: "/cart",
+  });
+};
+
+exports.postCart = async (req, res, next) => {
+  const { id } = req.params;
+  const product = await Product.findById(id);
+  await req.user.addToCart(product);
+  res.redirect("/cart");
+};

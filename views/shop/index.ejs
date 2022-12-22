@@ -15,11 +15,16 @@
         alt="<%=product.title %>"
       />
       <div class="card-body">
-        <h5 class="card-title"><%=product.title %></h5>
-        <p class="card-text">$<%= product.price %></p>
-        <a href="/product/<%=product._id%>" class="btn btn-outline-warning"
-          >More</a
-        >
+        <h5 class="card-title text-center"><%=product.title %></h5>
+        <p class="card-text text-center">$<%= product.price %></p>
+        <div class="card-body">
+          <a href="/product/<%=product._id%>" class="btn btn-outline-warning"
+            >More</a
+          >
+          <form action="/cart/<%=product._id%>" method="POST" class="d-inline">
+            <button class="btn btn-outline-warning">Add to Cart</button>
+          </form>
+        </div>
       </div>
     </div>
     <% } %>

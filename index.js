@@ -3,6 +3,7 @@ const app = express();
 const path = require("path");
 const mongoose = require("mongoose");
 const Product = require("./models/Product");
+const User = require("./models/User");
 const methodOverride = require("method-override");
 
 const shopRoutes = require("./routes/shop");
@@ -17,6 +18,19 @@ mongoose
     useUnifiedTopology: true,
   })
   .then(() => {
+    User.findOne().then((user) => {
+      if (!user) {
+        const user = new User({
+          name: "AA",
+          email: "aa@aa",
+          cart: {
+            items: [],
+          },
+        });
+        user.save();
+      }
+    });
+
     console.log("Database is connected");
   })
   .catch((err) => {
@@ -29,6 +43,16 @@ app.set("view engine", "ejs");
 
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
+
+app.use(async (req, res, next) => {
+  try {
+    const user = await User.findById("63a43c77c6de5ccb956a72ff");
+    req.user = user;
+    next();
+  } catch (err) {
+    console.log(err);
+  }
+});
 
 app.use(shopRoutes);
 app.use("/admin", adminRoutes);
