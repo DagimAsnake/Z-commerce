@@ -23,7 +23,7 @@ exports.postAddProduct = async (req, res, next) => {
     userId: userId,
   });
   await newProduct.save();
-  res.redirect(`/product/${newProduct._id}`);
+  res.redirect(`/admin/products`);
 };
 
 exports.getProducts = async (req, res, next) => {
@@ -51,7 +51,7 @@ exports.postEditProduct = async (req, res, next) => {
     runValidators: true,
     new: true,
   });
-  res.redirect(`/product/${product._id}`);
+  res.redirect(`/admin/products`);
 };
 
 exports.deleteProduct = async (req, res, next) => {

@@ -1,0 +1,21 @@
+<%- include('../includes/head.ejs') %>
+
+<body>
+  <%- include('../includes/navigation.ejs') %> <% if (orders.length <= 0) { %>
+  <h1>Nothing there!</h1>
+  <% } else { %>
+  <div class="row justify-content-center mx-5 px-5">
+    <% orders.forEach(order => { %>
+    <nav class="navbar navbar-light bg-light mt-3">
+      <h1 class="navbar-brand">Order - # <%= order._id %></h1>
+      <div class="container-fluid">
+        <div class="col">
+          <% order.products.forEach(p => { %>
+          <div><%= p.product.title %> (<%=p.quantity %>) <% }); %></div>
+        </div>
+      </div>
+    </nav>
+    <% }); %>
+  </div>
+  <% } %> <%-include('../includes/footer.ejs') %>
+</body>

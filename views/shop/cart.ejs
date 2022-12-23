@@ -18,7 +18,10 @@
           </h3>
         </div>
         <div class="col">
-          <form class="d-flex">
+          <form 
+          action="/cart/<%= product.productId._id %>/delete"
+          method="POST"
+          class="d-flex">
             <button class="btn btn-danger">Remove</button>
           </form>
         </div>
@@ -28,9 +31,13 @@
   <% } %>
   <hr />
   <div class="d-flex justify-content-center">
+    <form 
+    action="/cartOrder"
+    method="POST">
     <button class="btn btn-outline-warning btn-lg">Order</button>
+    </form>
   </div>
   <% } else {%>
-  <h2>No products are found!</h2>
+  <h2>No products in Cart!</h2>
   <% } %> <%- include('../includes/footer.ejs') %>
 </body>
