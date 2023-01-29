@@ -19,6 +19,7 @@
           href="/"
           >Shop</a
         >
+        <% if(isAuthenticated) {%>
         <a
           class="<%= path === '/cart' ? 'active nav-link fw-bolder fs-5' : 'nav-link fw-bolder fs-5' %>"
           href="/cart"
@@ -29,6 +30,7 @@
           href="/orders"
           >Order</a
         >
+
         <a
           class="<%= path === '/admin/addProduct' ? 'active nav-link fw-bolder fs-5' : 'nav-link fw-bolder fs-5' %>"
           href="/admin/addProduct"
@@ -39,11 +41,32 @@
           href="/admin/products"
           >Admin Product</a
         >
+        <% } %>
       </div>
       <div class="navbar-nav ms-auto">
-        <a class="nav-link fw-bolder fs-5" href="/login"> Login </a>
-        <a class="nav-link fw-bolder fs-5" href="/register"> Register </a>
-        <a class="nav-link fw-bolder fs-5" href="/logout"> Logout </a>
+        <% if(!isAuthenticated) {%>
+        <a
+          class="<%= path === '/login' ? 'active nav-link fw-bolder fs-5' : 'nav-link fw-bolder fs-5' %>"
+          href="/login"
+        >
+          Login
+        </a>
+        <a
+          class="<%= path === '/signup' ? 'active nav-link fw-bolder fs-5' : 'nav-link fw-bolder fs-5' %>"
+          href="/signup"
+        >
+          Signup
+        </a>
+        <% } else {%>
+        <form class="nav-link bg-warning" action="/logout" method="post">
+          <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
+          <button
+            class="bg-danger border rounded-5 p-1 text-white border-danger"
+          >
+            Logout
+          </button>
+        </form>
+        <% } %>
       </div>
     </div>
   </div>

@@ -1,0 +1,57 @@
+<%- include('../includes/head.ejs') %>
+
+<body>
+  <%- include('../includes/navigation.ejs') %>
+
+  <div class="row mt-3 mx-1">
+    <% if(errorMessage) {%>
+    <div class="col-md-6 offset-md-3 col-lg-4 offset-lg-4">
+      <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <div class="text-center"><%= errorMessage %></div>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="alert"
+          aria-label="Close"
+        ></button>
+      </div>
+    </div>
+    <% } %>
+    <h1 class="text-center">Signup</h1>
+    <div class="col-md-6 offset-md-3 col-lg-4 offset-lg-4">
+      <form action="/signup" method="POST">
+        <div class="mb-3">
+          <label for="email" class="form-label"> Email </label>
+          <input type="text" class="form-control" id="email" name="email" />
+        </div>
+        <div class="mb-3">
+          <label for="password" class="form-label"> Password </label>
+          <input
+            type="password"
+            class="form-control"
+            id="password"
+            name="password"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label for="confirmpassword" class="form-label">
+            Confirm Password
+          </label>
+          <input
+            type="password"
+            class="form-control"
+            id="confirmpassword"
+            name="confirmpassword"
+          />
+        </div>
+
+        <div class="mb-3">
+          <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
+          <button class="btn btn-outline-warning">Sign up</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <%- include('../includes/footer.ejs') %>
+</body>

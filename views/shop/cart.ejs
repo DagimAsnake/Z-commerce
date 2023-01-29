@@ -22,6 +22,7 @@
           action="/cart/<%= product.productId._id %>/delete"
           method="POST"
           class="d-flex">
+          <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
             <button class="btn btn-danger">Remove</button>
           </form>
         </div>
@@ -34,6 +35,7 @@
     <form 
     action="/cartOrder"
     method="POST">
+    <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
     <button class="btn btn-outline-warning btn-lg">Order</button>
     </form>
   </div>
